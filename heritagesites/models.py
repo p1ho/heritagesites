@@ -122,6 +122,7 @@ class HeritageSite(models.Model):
     area_hectares = models.FloatField(blank=True, null=True)
     heritage_site_category = models.ForeignKey('HeritageSiteCategory', models.DO_NOTHING)
     transboundary = models.IntegerField()
+    country_area = models.ManyToManyField(CountryArea, through='HeritageSiteJurisdiction')
 
     class Meta:
         managed = False
@@ -135,6 +136,18 @@ class HeritageSite(models.Model):
 
     def __str__(self):
         return self.site_name
+
+class HeritageSiteJurisdiction(models.Model):
+    heritage_site_jurisdiction_id = models.AutoField(primary_key=True)
+    heritage_site = models.ForeignKey(HeritageSite, models.DO_NOTHING)
+    country_area = models.ForeignKey(CountryArea, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'heritage_site_jurisdiction'
+        ordering = ['heritage_site', 'country_area']
+        verbose_name = 'UNESCO Heritage Site Jurisdiction'
+        verbose_name_plural = 'UNESCO Heritage Site Jurisdictions'
 
 # This part has been manually created
 class HeritageSiteCategory(models.Model):

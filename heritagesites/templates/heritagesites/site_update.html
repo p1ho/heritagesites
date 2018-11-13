@@ -1,4 +1,6 @@
-<!-- Restore missing template tags -->
+{% extends 'heritagesites/base.html' %}
+
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -12,7 +14,29 @@
 
 
   <!-- Restore missing fields rendered using Bootstrap rows and columns classes -->
+  <div class="row">
+    <div class="col-6">
+      {{ form.heritage_site_category|as_crispy_field }}
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-6">
+      {{ form.country_area|as_crispy_field }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      {{ form.site_name|as_crispy_field }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      {{ form.description|as_crispy_field }}
+    </div>
+  </div>
 
   <div class="row">
     <div class="col-6">
@@ -21,14 +45,22 @@
   </div>
 
   <div class="row">
-    <div class="col-6">
+    <div class="col-3">
       {{ form.date_inscribed|as_crispy_field }}
+    </div>
+    <div class="col-3">
+      {{ form.area_hectares|as_crispy_field }}
     </div>
   </div>
 
-
-  <!-- Restore missing fields rendered using Bootstrap rows and columns classes -->
-
+  <div class="row">
+    <div class="col-3">
+      {{ form.longitude|as_crispy_field }}
+    </div>
+    <div class="col-3">
+      {{ form.latitude|as_crispy_field }}
+    </div>
+  </div>
 
   <div class="row">
     <div class="col-6">
@@ -37,8 +69,8 @@
   </div>
 
   <button type="submit" class="btn btn-outline-success">Update</button>
+  &nbsp;<a class="btn btn-outline-secondary" href="{% url 'site_detail' site.pk %}">cancel</a>
 
-  <!-- Restore missing button -->
 
 </form>
 
