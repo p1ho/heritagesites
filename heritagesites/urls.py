@@ -14,5 +14,8 @@ urlpatterns = [
     # adding paths for form
     path('sites/new/', views.SiteCreateView.as_view(), name='site_new'),
     path('sites/<int:pk>/delete/', views.SiteDeleteView.as_view(), name='site_delete'),
-    path('sites/<int:pk>/update/', views.SiteUpdateView.as_view(), name='site_update')
+    path('sites/<int:pk>/update/', views.SiteUpdateView.as_view(), name='site_update'),
+
+    # adding path for filter
+    path('sites/filter/', views.SiteFilterView.as_view(), name='site_filter')
 ]
