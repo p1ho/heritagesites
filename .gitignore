@@ -6,6 +6,8 @@ mysite/secrets.py
 *.whl
 *.sql
 backup/
+=======
+**/*.yaml
 
 ### Intellij ###
 .idea/
